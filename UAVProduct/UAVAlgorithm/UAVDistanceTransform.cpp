@@ -1,7 +1,7 @@
 //
 // Created by wuwei on 18-1-11.
 //
-
+#include <iostream>
 #include "UAVDistanceTransform.h"
 #include <algorithm>
 
@@ -123,7 +123,7 @@ void DistanceTransform(unsigned char* imgData,int width,int height)
     float *outData = nullptr;
     try {
         outData = new float[width*height];
-        for(int i=0;i<width*height;++j)
+        for(int i=0;i<width*height;++i)
             outData[i]=imgData[i];
 
         //columns
@@ -154,10 +154,10 @@ void DistanceTransform(unsigned char* imgData,int width,int height)
         }
         delete []fData;fData = NULL;
 
-        for(int i=0;i<width*height;++j)
+        for(int i=0;i<width*height;++i)
             imgData[i]=outData[i]>255?255:outData[i];
 
-        delete[]outData[i];
+        delete[]outData;
     }catch (std::bad_alloc e)
     {
         std::cerr<<e.what()<<endl;
@@ -169,7 +169,7 @@ void DistanceTransform(int* imgData,int width,int height)
     float *outData = nullptr;
     try {
         outData = new float[width*height];
-        for(int i=0;i<width*height;++j)
+        for(int i=0;i<width*height;++i)
             outData[i]=imgData[i];
 
         //columns
