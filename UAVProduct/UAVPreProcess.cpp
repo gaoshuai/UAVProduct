@@ -275,7 +275,7 @@ UAVErr UAVProcessList::UAVProcessListGet(std::string image_dir,std::string sfm_o
     POSPair::iterator pos_iter = pPorc->posList.begin();
     for (std::vector<std::string>::const_iterator iter_image = vec_image.begin();
         iter_image != vec_image.end();
-        ++iter_image,++pos_iter)
+        ++iter_image)
     {
         ppx = ppy = width = height = focal = -1;
 
@@ -367,6 +367,7 @@ UAVErr UAVProcessList::UAVProcessListGet(std::string image_dir,std::string sfm_o
             double z = pos_iter->second.dH;
             v.pose_center_ = openMVG::Vec3(x,y,z);
             views[v.id_view] = std::make_shared<ViewPriors>(v);
+            ++pos_iter;
         }
 
     }
